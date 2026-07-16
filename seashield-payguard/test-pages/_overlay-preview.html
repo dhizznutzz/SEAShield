@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8" /><title>Overlay preview (dev only)</title></head>
+<body style="font-family:system-ui;padding:20px;background:#f1f5f9">
+  <p>Dev-only harness to preview the SeaShield warning overlay (not part of the extension).</p>
+  <script src="../extension/content/overlay.js"></script>
+  <script>
+    const verdict = {
+      score: 88,
+      level: "danger",
+      recommendation: "Do not pay. The domain imitates PayPal and the invoice asks for a changed bank account.",
+      findings: [
+        { category: "url", reason: 'This domain (secure-paypa1.com) is on SeaShield’s known-fraud list.' },
+        { category: "url", reason: "This page is not using a secure (HTTPS) connection." },
+        { category: "company", reason: 'The domain imitates "paypal" using look-alike characters (paypa1).' },
+        { category: "invoice", reason: "The invoice mixes urgency with new bank/account details — a classic invoice-fraud pattern." },
+        { category: "assessment", reason: "The urgency and changed bank details strongly suggest a Business Email Compromise scam." }
+      ]
+    };
+    const context = {
+      finalDomain: "secure-paypa1.com", https: false,
+      merchantName: "PayPal", invoiceNumber: "INV-2024-00981",
+      amount: "980.00", currency: "$", payeeAccount: "GB29 NWBK 6016 1331 9268 19"
+    };
+    window.SeaShieldOverlay.show(verdict, context, {
+      onProceed: () => alert("proceed"), onCancel: () => alert("cancel")
+    });
+    // Auto-expand the breakdown for the screenshot.
+    setTimeout(() => {
+      document.getElementById("seashield-overlay-host").shadowRoot.getElementById("ss-why").click();
+    }, 200);
+  </script>
+</body>
+</html>

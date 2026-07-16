@@ -1,0 +1,31 @@
+* { box-sizing: border-box; }
+body {
+  width: 320px; margin: 0; padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #0f172a; color: #e2e8f0; font-size: 13px;
+}
+header { display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-bottom: 1px solid #1e293b; }
+.logo { font-size: 22px; }
+.title { font-weight: 700; font-size: 15px; }
+.subtitle { font-size: 11px; opacity: .6; }
+.switch { position: relative; margin-left: auto; width: 42px; height: 24px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; inset: 0; background: #334155; border-radius: 999px; transition: .2s; cursor: pointer; }
+.slider::before { content: ""; position: absolute; height: 18px; width: 18px; left: 3px; top: 3px; background: #fff; border-radius: 50%; transition: .2s; }
+input:checked + .slider { background: #22c55e; }
+input:checked + .slider::before { transform: translateX(18px); }
+section { padding: 14px 16px; border-bottom: 1px solid #1e293b; }
+.row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.thresh { font-weight: 700; color: #38bdf8; }
+input[type="range"] { width: 100%; accent-color: #38bdf8; }
+.hint { font-size: 11px; opacity: .55; margin-top: 6px; }
+.api label, .section-title { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; opacity: .55; margin-bottom: 6px; }
+#apiUrl { width: 100%; padding: 7px 9px; border-radius: 7px; border: 1px solid #334155; background: #1e293b; color: #e2e8f0; font-size: 12px; }
+.history { list-style: none; margin: 0; padding: 0; max-height: 190px; overflow-y: auto; }
+.history li { display: flex; align-items: center; gap: 8px; padding: 7px 0; border-bottom: 1px solid #1e293b; }
+.history li.empty { opacity: .5; justify-content: center; border: none; }
+.dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+.dot.safe { background: #22c55e; } .dot.caution { background: #f59e0b; } .dot.danger { background: #ef4444; }
+.h-domain { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.h-meta { font-size: 11px; opacity: .6; }
+.h-score { margin-left: auto; font-weight: 700; }

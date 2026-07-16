@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>PayPal Invoice — Action Required</title>
+  <meta property="og:site_name" content="PayPal" />
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 520px; margin: 40px auto; padding: 0 16px; }
+    .card { border: 1px solid #ddd; border-radius: 12px; padding: 24px; }
+    .warn { background: #fef2f2; border: 1px solid #fecaca; padding: 12px; border-radius: 8px; color: #991b1b; }
+    .total { font-size: 22px; font-weight: 700; margin: 18px 0; }
+    .bank { background: #f8fafc; padding: 12px; border-radius: 8px; font-family: monospace; }
+    button { width: 100%; padding: 14px; background: #dc2626; color: #fff; border: none; border-radius: 10px; font-size: 16px; cursor: pointer; margin-top: 16px; }
+    a.pay { display: inline-block; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>PayPal Invoice</h2>
+    <div class="warn">
+      <strong>URGENT — FINAL NOTICE.</strong> Your account has changed. You must pay immediately
+      (within 24 hours) to avoid suspension.
+    </div>
+    <p>Pay to: <strong>PayPal Billing Department</strong></p>
+    <p>Invoice #: <strong>INV-2024-00981</strong></p>
+    <div class="total">Amount due: $980.00 USD</div>
+    <p>Please transfer to the new bank details below:</p>
+    <div class="bank">
+      IBAN: GB29 NWBK 6016 1331 9268 19<br />
+      Account number: 1331 9268 19
+    </div>
+    <p><a class="pay" href="https://bit.ly/pay-now">Alternative: pay via this quick link →</a></p>
+    <button onclick="document.getElementById('done').textContent='⚠️ Payment sent (demo).';">
+      Authorise payment of $980.00
+    </button>
+    <p id="done"></p>
+  </div>
+  <p style="text-align:center; opacity:.5; font-size:12px">
+    Demo page. Open it from a look-alike host (e.g. secure-paypa1.com) to see the strongest warning.
+  </p>
+</body>
+</html>

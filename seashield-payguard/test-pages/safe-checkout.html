@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Cool Gadgets — Checkout</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 460px; margin: 40px auto; padding: 0 16px; }
+    .card { border: 1px solid #ddd; border-radius: 12px; padding: 24px; }
+    label { display: block; margin: 12px 0 4px; font-size: 14px; }
+    input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; }
+    .total { font-size: 20px; font-weight: 700; margin: 20px 0; }
+    button { width: 100%; padding: 14px; background: #16a34a; color: #fff; border: none; border-radius: 10px; font-size: 16px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Checkout — Cool Gadgets</h2>
+    <p>Pay to: <strong>Cool Gadgets Ltd</strong></p>
+    <div class="total">Total due: $39.00 USD</div>
+    <form onsubmit="event.preventDefault(); document.getElementById('done').textContent='✅ Payment submitted (demo).';">
+      <label>Card number</label>
+      <input name="card_number" autocomplete="cc-number" placeholder="4242 4242 4242 4242" />
+      <label>CVV</label>
+      <input name="cvv" placeholder="123" />
+      <button type="submit">Pay $39.00 now</button>
+    </form>
+    <p id="done"></p>
+  </div>
+</body>
+</html>

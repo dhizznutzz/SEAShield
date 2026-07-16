@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  /* Deep navy — trust / security base */
+  --color-navy-950: #060f1f;
+  --color-navy-900: #0b1f3a;
+  --color-navy-850: #0e2544;
+  --color-navy-800: #122c50;
+  --color-navy-700: #17375f;
+  --color-navy-600: #1e4675;
+
+  /* Brand blue — primary actions */
+  --color-brand-300: #7cb0ff;
+  --color-brand-400: #4d90ff;
+  --color-brand-500: #2f6df6;
+  --color-brand-600: #1f56d6;
+
+  /* Teal — security "safe" accent */
+  --color-shield-400: #2dd4bf;
+  --color-shield-500: #14b8a6;
+  --color-shield-600: #0d9488;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #0b1f3a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle dotted grid used behind dark hero sections */
+.bg-grid {
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.06) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+}
+
+/* Scroll-reveal animation */
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+}
+
+.reveal.is-visible {
+  animation: reveal-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal.is-visible {
+    opacity: 1;
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Slow pulse for the "live scanning" indicator */
+@keyframes ping-slow {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  75%,
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+.animate-ping-slow {
+  animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}

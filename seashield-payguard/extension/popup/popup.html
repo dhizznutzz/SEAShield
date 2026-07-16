@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">🛡️</span>
+    <div>
+      <div class="title">SeaShield</div>
+      <div class="subtitle">AI Payment Guard</div>
+    </div>
+    <label class="switch">
+      <input type="checkbox" id="enabled" checked />
+      <span class="slider"></span>
+    </label>
+  </header>
+
+  <section class="control">
+    <div class="row">
+      <span>Warn me when risk is at least</span>
+      <span id="threshVal" class="thresh">31</span>
+    </div>
+    <input type="range" id="threshold" min="1" max="90" value="31" />
+    <div class="hint">Lower = more cautious (more warnings). Higher = fewer warnings.</div>
+  </section>
+
+  <section class="api">
+    <label for="apiUrl">Risk service URL</label>
+    <input type="text" id="apiUrl" spellcheck="false" />
+  </section>
+
+  <section>
+    <div class="section-title">Recent scans</div>
+    <ul id="history" class="history"><li class="empty">No scans yet.</li></ul>
+  </section>
+
+  <script src="popup.js"></script>
+</body>
+</html>
