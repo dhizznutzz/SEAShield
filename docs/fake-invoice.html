@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PayPal Invoice — Action Required</title>
+  <meta property="og:site_name" content="PayPal" />
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 520px; margin: 0 auto; padding: 0 16px 40px; }
+    .demobar { max-width: 520px; margin: 0 auto 24px; font-family: system-ui, sans-serif; font-size: 13px;
+      background: #0f172a; color: #e2e8f0; padding: 10px 14px; border-radius: 0 0 10px 10px; }
+    .demobar a { color: #7dd3fc; }
+    .demobar .pill { background:#7f1d1d; color:#fecaca; padding:1px 8px; border-radius:999px; font-weight:700; font-size:11px; letter-spacing:.04em; }
+    .urlbar { max-width: 520px; margin: 16px auto 8px; font-family: ui-monospace, monospace; font-size: 13px;
+      background:#f1f5f9; border:1px solid #e2e8f0; border-radius: 999px; padding: 8px 14px; color:#334155; }
+    .urlbar b { color:#b91c1c; }
+    .card { border: 1px solid #ddd; border-radius: 12px; padding: 24px; }
+    .warn { background: #fef2f2; border: 1px solid #fecaca; padding: 12px; border-radius: 8px; color: #991b1b; }
+    .total { font-size: 22px; font-weight: 700; margin: 18px 0; }
+    .bank { background: #f8fafc; padding: 12px; border-radius: 8px; font-family: monospace; }
+    button { width: 100%; padding: 14px; background: #dc2626; color: #fff; border: none; border-radius: 10px; font-size: 16px; cursor: pointer; margin-top: 16px; }
+    a.pay { display: inline-block; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <div class="demobar">
+    <span class="pill">SEASHIELD DEMO</span>
+    This is a <strong>fake scam invoice</strong>. Click “Authorise payment” to see SeaShield step in.
+    &nbsp;<a href="./index.html">← All demos</a>
+  </div>
+  <div class="urlbar">🔒 https://<b>secure-paypa1.com</b>/invoice/980 &nbsp;— note the “1” instead of “l”</div>
+
+  <div class="card">
+    <h2>PayPal Invoice</h2>
+    <div class="warn">
+      <strong>URGENT — FINAL NOTICE.</strong> Your account has changed. You must pay immediately
+      (within 24 hours) to avoid suspension.
+    </div>
+    <p>Pay to: <strong>PayPal Billing Department</strong></p>
+    <div class="total">Amount due: $980.00 USD</div>
+    <p>Please transfer to the new bank details below:</p>
+    <div class="bank">
+      IBAN: GB29 NWBK 6016 1331 9268 19<br />
+      Account number: 1331 9268 19
+    </div>
+    <p><a class="pay" href="https://bit.ly/pay-now">Alternative: pay via this quick link →</a></p>
+    <button onclick="document.getElementById('done').textContent='⚠️ Payment sent (demo).';">
+      Authorise payment of $980.00
+    </button>
+    <p id="done"></p>
+  </div>
+  <p style="text-align:center; opacity:.5; font-size:12px">
+    Demo page. SeaShield treats this as if it were served from the look-alike host secure-paypa1.com.
+  </p>
+
+  <!-- SeaShield demo: simulate the spoofed site this "invoice" pretends to be on. -->
+  <script>
+    window.SEASHIELD_DEMO_CONTEXT = {
+      url: "https://secure-paypa1.com/invoice/980",
+      finalDomain: "secure-paypa1.com",
+      https: true,
+    };
+  </script>
+  <script src="./assets/engine.js"></script>
+  <script src="./assets/overlay.js"></script>
+  <script src="./assets/demo.js"></script>
+</body>
+</html>

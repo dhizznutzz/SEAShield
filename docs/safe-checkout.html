@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cool Gadgets — Checkout</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 460px; margin: 0 auto; padding: 0 16px 40px; }
+    .demobar { max-width: 460px; margin: 0 auto 24px; font-family: system-ui, sans-serif; font-size: 13px;
+      background: #0f172a; color: #e2e8f0; padding: 10px 14px; border-radius: 0 0 10px 10px; }
+    .demobar a { color: #7dd3fc; }
+    .demobar .pill { background:#064e3b; color:#a7f3d0; padding:1px 8px; border-radius:999px; font-weight:700; font-size:11px; letter-spacing:.04em; }
+    .urlbar { max-width: 460px; margin: 16px auto 8px; font-family: ui-monospace, monospace; font-size: 13px;
+      background:#f1f5f9; border:1px solid #e2e8f0; border-radius: 999px; padding: 8px 14px; color:#334155; }
+    .urlbar b { color:#15803d; }
+    .card { border: 1px solid #ddd; border-radius: 12px; padding: 24px; }
+    label { display: block; margin: 12px 0 4px; font-size: 14px; }
+    input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; }
+    .total { font-size: 20px; font-weight: 700; margin: 20px 0; }
+    button { width: 100%; padding: 14px; background: #16a34a; color: #fff; border: none; border-radius: 10px; font-size: 16px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div class="demobar">
+    <span class="pill">SEASHIELD DEMO</span>
+    This is a <strong>normal, legitimate checkout</strong>. Click “Pay” — SeaShield lets it through.
+    &nbsp;<a href="./index.html">← All demos</a>
+  </div>
+  <div class="urlbar">🔒 https://<b>checkout.coolgadgets.com</b>/cart</div>
+
+  <div class="card">
+    <h2>Checkout — Cool Gadgets</h2>
+    <p>Pay to: <strong>Cool Gadgets Ltd</strong></p>
+    <div class="total">Total due: $39.00 USD</div>
+    <form onsubmit="event.preventDefault(); document.getElementById('done').textContent='✅ Payment submitted (demo).';">
+      <label>Card number</label>
+      <input name="card_number" autocomplete="cc-number" placeholder="4242 4242 4242 4242" />
+      <label>CVV</label>
+      <input name="cvv" placeholder="123" />
+      <button type="submit">Pay $39.00 now</button>
+    </form>
+    <p id="done"></p>
+  </div>
+  <p style="text-align:center; opacity:.5; font-size:12px">
+    Demo page. SeaShield treats this as if it were served from the merchant host checkout.coolgadgets.com.
+  </p>
+
+  <!-- SeaShield demo: a benign first-party checkout — low risk, payment proceeds. -->
+  <script>
+    window.SEASHIELD_DEMO_CONTEXT = {
+      url: "https://checkout.coolgadgets.com/cart",
+      finalDomain: "checkout.coolgadgets.com",
+      https: true,
+    };
+  </script>
+  <script src="./assets/engine.js"></script>
+  <script src="./assets/overlay.js"></script>
+  <script src="./assets/demo.js"></script>
+</body>
+</html>

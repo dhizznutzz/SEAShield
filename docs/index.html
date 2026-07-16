@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SeaShield — AI Payment Guard · Live Demo</title>
+  <meta name="description" content="Try SeaShield: a safety layer that inspects a checkout or invoice before you pay and warns you if it looks like fraud. No install required." />
+  <meta property="og:title" content="SeaShield — AI Payment Guard" />
+  <meta property="og:description" content="A safety layer that inspects a payment before you authorise it. Try the live demo — no install." />
+  <style>
+    :root { color-scheme: light dark; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif;
+      color: #0f172a; background: #f8fafc; line-height: 1.55;
+    }
+    .wrap { max-width: 880px; margin: 0 auto; padding: 0 20px; }
+    header { text-align: center; padding: 64px 20px 32px; }
+    .logo { font-size: 40px; }
+    h1 { font-size: clamp(28px, 5vw, 40px); margin: 12px 0 6px; letter-spacing: -.02em; }
+    .tag { font-size: 17px; color: #475569; max-width: 620px; margin: 0 auto; }
+    .lead { max-width: 640px; margin: 22px auto 0; color: #334155; font-size: 15.5px; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 36px 0; }
+    @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+    .card {
+      display: block; text-decoration: none; color: inherit; background: #fff;
+      border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px;
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(15,23,42,.09); }
+    .card .pill { display:inline-block; font-size: 11px; font-weight: 700; letter-spacing: .06em;
+      padding: 3px 10px; border-radius: 999px; }
+    .pill.danger { background: #fef2f2; color: #b91c1c; }
+    .pill.safe { background: #ecfdf5; color: #047857; }
+    .card h3 { margin: 12px 0 6px; font-size: 19px; }
+    .card p { margin: 0; color: #475569; font-size: 14.5px; }
+    .card .cta { margin-top: 14px; font-weight: 600; color: #0369a1; font-size: 14px; }
+    .how { background:#fff; border:1px solid #e2e8f0; border-radius:16px; padding: 24px 28px; margin: 8px 0 36px; }
+    .how h2 { margin: 0 0 8px; font-size: 20px; }
+    .how ol { margin: 0; padding-left: 20px; color:#334155; }
+    .how li { margin: 6px 0; }
+    .note { font-size: 13.5px; color:#64748b; background:#f1f5f9; border-radius:12px; padding:16px 18px; margin-bottom: 40px; }
+    .note code { background:#e2e8f0; padding:1px 5px; border-radius:5px; font-size: 12.5px; }
+    footer { text-align:center; color:#94a3b8; font-size:13px; padding: 20px 0 60px; }
+    footer a { color:#64748b; }
+    @media (prefers-color-scheme: dark) {
+      body { background:#0b1120; color:#e2e8f0; }
+      .tag,.lead { color:#94a3b8; }
+      .card,.how,.note { background:#111a2e; border-color:#1e293b; }
+      .card p { color:#94a3b8; }
+      .note { background:#0f1729; color:#94a3b8; }
+      .note code { background:#1e293b; }
+      .card .cta { color:#38bdf8; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">🛡️</div>
+    <h1>SeaShield — AI Payment Guard</h1>
+    <p class="tag">A safety layer that inspects a checkout or invoice <em>before</em> you authorise a payment, and warns you if it looks like fraud.</p>
+    <p class="lead">
+      Pick a demo below and click the payment button. On a suspicious page, SeaShield pauses the payment
+      and shows a risk score with the reasons why. Everything runs in your browser — nothing is installed
+      and no data leaves this page.
+    </p>
+  </header>
+
+  <main class="wrap">
+    <div class="grid">
+      <a class="card" href="./fake-invoice.html">
+        <span class="pill danger">SCAM INVOICE</span>
+        <h3>Fake PayPal invoice</h3>
+        <p>A look-alike domain, urgency, changed bank details and a shortened payment link. Click “Authorise payment” and watch SeaShield block it — you’ll have to type <strong>PROCEED</strong> to override.</p>
+        <div class="cta">Try the scam demo →</div>
+      </a>
+      <a class="card" href="./safe-checkout.html">
+        <span class="pill safe">REAL PAYMENT</span>
+        <h3>Legitimate checkout</h3>
+        <p>An ordinary merchant checkout with no red flags. Click “Pay” and SeaShield stays out of the way — the payment goes straight through.</p>
+        <div class="cta">Try the safe demo →</div>
+      </a>
+    </div>
+
+    <div class="how">
+      <h2>How it works</h2>
+      <ol>
+        <li>When you click a Pay / Authorise button, SeaShield intercepts it before the payment happens.</li>
+        <li>It reads the page — the site domain, payee, amount, bank details and any payment links.</li>
+        <li>A heuristics + reputation engine scores the risk from <strong>0–100</strong>: 0–30 safe, 31–70 caution, 71–100 danger.</li>
+        <li>Low risk proceeds silently. Anything higher shows a warning; high-risk payments require you to type <strong>PROCEED</strong>.</li>
+      </ol>
+    </div>
+
+    <p class="note">
+      <strong>About this demo:</strong> the real SeaShield is a Chrome extension backed by a cloud AI service.
+      This page is a self-contained port of its heuristics engine so anyone can try the flow with no setup.
+      To run the full extension (with the AI layer) locally, clone the repo and follow
+      <code>seashield-payguard/README.md</code>.
+    </p>
+  </main>
+
+  <footer>
+    SeaShield is an assistant, not a guarantee — you always make the final call.<br />
+    <a href="https://github.com/dhizznutzz/SEAShield">Source on GitHub</a>
+  </footer>
+</body>
+</html>
